@@ -149,7 +149,7 @@ class ConsoleOutputDebugCommand extends Command
         // info(): 绿色, warn(): 黄色
 
         if (!empty($rows)) {
-            $this->warn('');
+            $this->line('');
             // table 方法传入的 $header 和 $data 最好是 元素数目相等, 并且顺序对应...
             // 否则结果会比较怪异
             $header = ['sql', 'duration'];

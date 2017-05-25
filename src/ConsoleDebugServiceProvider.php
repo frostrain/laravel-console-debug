@@ -87,15 +87,16 @@ class ConsoleDebugServiceProvider extends ServiceProvider
             $params = [];
 
             $params[$this->verboseLevel] = true;
+            $command = 'console:output-debug-info';
+            $params['command'] = $command;
 
-
-            $output = new \Symfony\Component\Console\Output\ConsoleOutput;
-            // 这里必须指定 $output, 否则看不到输出的信息...
-            $r = Artisan::call('console:output-debug-info', $params, $output);
+            $input = new \Symfony\Component\Console\Input\ArrayInput($params);
+            $output = new \Symfony\Component\Console\Output\ConsoleOutput();
+            // 为了 5.0-5.3 的兼容性, 需要使用 handle() 而不是 call()
+            // 不过 5.0 还是不能显示颜色..
+            Artisan::handle($input, $output);
         });
-
     }
-
 
     /**
      * Register the application services.
