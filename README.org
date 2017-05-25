@@ -5,7 +5,7 @@
 * Dependency
 - laravel 5
 - [[https://github.com/barryvdh/laravel-debugbar][barryvdh/laravel-debugbar]] (laravel-debugbar itself dosen't display debug messages in console)
-* About
+* Introduction
 This package can show laravel-debugbar's debug messages and SQL queries in *console*.
 
 For example, there have a =test= command
@@ -72,6 +72,11 @@ Then add service in =config/app.php=.
       Barryvdh\Debugbar\ServiceProvider::class,
       Frostrain\Laravel\ConsoleDebug\ConsoleDebugServiceProvider::class,
   ]
+#+END_SRC
+
+Then you can use =-v= or more verbose flag to show debug messages
+#+BEGIN_SRC sh
+  php artisan test -v
 #+END_SRC
 * Configuration (optional)
 You can publish config file:

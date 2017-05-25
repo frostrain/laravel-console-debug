@@ -73,7 +73,7 @@
   ]
 #+END_SRC
 
-调试信息只有在执行的命令带有 =-v= 或以上的参数时, 才会显示
+然后就可以使用 =-v= 或以上的参数(-vv, -vvv)来显示调试信息
 #+BEGIN_SRC sh
   php artisan test -v
 #+END_SRC
