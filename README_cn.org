@@ -1,20 +1,19 @@
 #+TITLE: Laravel Console Debug
 #+AUTHOR: frostrain
 
-[[file:README_cn.org][中文说明]]
-* Dependency
+* 依赖
 - laravel 5
-- [[https://github.com/barryvdh/laravel-debugbar][barryvdh/laravel-debugbar]] (laravel-debugbar itself dosen't display debug messages in console)
-* About
-This package can show laravel-debugbar's debug messages and SQL queries in *console*.
+- [[https://github.com/barryvdh/laravel-debugbar][barryvdh/laravel-debugbar]] (laravel-debugbar 本身并不能在命令行中显示调试信息)
+* 介绍
+这个包可以在 console 中显示 laravel-debugbar 收集到的 *调试信息* 和 *执行的sql*.
 
-For example, there have a =test= command
+比如这里有一个 =test= 命令
 #+BEGIN_SRC sh
-  # if you dosen't use -v flag, it will not display debug messages
+  # 不带有 -v 参数时, 不显示 调试信息
   $ php artisan test
   hello!
 
-  # with -v or more verbose flag, it will display debug messages
+  # 带有 -v 或以上的参数才会显示 调试信息
   $ php artisan test -v
   hello!
 
@@ -41,7 +40,7 @@ For example, there have a =test= command
   +-------------------------------+----------+
 #+END_SRC
 
-=Test= command's example (this example require laravel 5.4+ to run, you need put these code in =routes/console.php=, for laravel 5.3 and below you can use =Command= class)
+=test= 命令的例子, 需要写在 =routes/console.php= 中 (注意, laravel 5.4 和以上才能这样写)
 #+BEGIN_SRC php
   Artisan::command('test', function(){
       $this->line('hello!');
@@ -57,25 +56,29 @@ For example, there have a =test= command
       \App\User::first();
   });
 #+END_SRC
-* Installation
-Install by composer:
+* 安装和使用
+通过 composer 安装
 #+BEGIN_SRC sh
   composer require --dev frostrain/laravel-console-debug
 #+END_SRC
 
-Then add service in =config/app.php=.
+然后在 =config/app.php= 中添加服务
 #+BEGIN_SRC php
   'providers' => [
       // ...
 
-      // Register laravel-debugbar's service first
+      // 需要先注册 laravel-debugbar 的服务
       Barryvdh\Debugbar\ServiceProvider::class,
       Frostrain\Laravel\ConsoleDebug\ConsoleDebugServiceProvider::class,
   ]
 #+END_SRC
-* Configuration (optional)
-You can publish config file:
+
+调试信息只有在执行的命令带有 =-v= 或以上的参数时, 才会显示
+#+BEGIN_SRC sh
+  php artisan test -v
+#+END_SRC
+* 配置 (可选操作)
+你可以设置自己的配置, 通过下面的命令将配置文件复制到 =config/console_debug.php=, 然后修改其中的配置即可
 #+BEGIN_SRC sh
   php artisan vendor:publish --provider="Frostrain\Laravel\ConsoleDebug\ConsoleDebugServiceProvider"
 #+END_SRC
-then set you own configurations in =config/console_debug.php=.

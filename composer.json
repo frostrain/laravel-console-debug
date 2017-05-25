@@ -11,8 +11,7 @@
         }
     ],
     "require": {
-        "barryvdh/laravel-debugbar": "2.*",
-        "illuminate/support": "5.*"
+        "barryvdh/laravel-debugbar": "2.*"
     },
     "autoload": {
         "psr-4": {
