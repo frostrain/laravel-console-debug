@@ -1,0 +1,8 @@
+#+TITLE: Laravel Console Debug
+#+AUTHOR: frostrain
+
+* Dependency
+- laravel 5
+- [[https://github.com/barryvdh/laravel-debugbar][barryvdh/laravel-debugbar]] (laravel-debugbar itself dosen't display debug messages in console)
+* About
+This package can show laravel-debugbar's debug messages and SQL queries in *console*.
