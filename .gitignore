@@ -1,4 +1,5 @@
 /vendor
 /node_modules
+/laravel
 .idea
 composer.lock

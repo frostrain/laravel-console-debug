@@ -13,6 +13,11 @@ class ConsoleOutputDebugCommand extends Command
      * @var string
      */
     protected $signature = 'console:output-debug-info';
+    /**
+     * for laravel 5.0
+     * @var string
+     */
+    protected $name = 'console:output-debug-info';
 
     /**
      * The console command description.
