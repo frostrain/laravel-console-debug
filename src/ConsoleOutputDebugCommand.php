@@ -98,7 +98,7 @@ class ConsoleOutputDebugCommand extends Command
         }
 
         if (!empty($rows)) {
-            $this->warn('');
+            $this->info('');
             // table 方法传入的 $header 和 $data 最好是 元素数目相等, 并且顺序对应...
             // 否则结果会比较怪异
             $header = ['level', 'debug message'];
