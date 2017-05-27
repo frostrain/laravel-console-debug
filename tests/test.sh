@@ -72,7 +72,8 @@ function setup_database(){
         env[DB_PASSWORD]=$DB_PASSWORD
 
         env[DB_DATABASE]=$database
-        mysql -e 'create database IF NOT EXISTS '$database';' -uroot
+        # 数据库中有 点号时(5.0) 需要使用 ` 括起来
+        mysql -e "create database IF NOT EXISTS \`$database\`;" -uroot
         mysql -e "grant all privileges on *.* to '$DB_USERNAME'@'localhost' with grant option;" -uroot
     fi
 }
@@ -156,7 +157,7 @@ function test_version() {
 
     # 如果 debug 输出中 没有对应关键字, 退出非0
     grep 'info' debug.txt > /dev/null || { add_error_version $version; return; }
-    grep 'users' debug.txt > /dev/null || { add_error_version $version; return; }
+    grep "select \* from `users`" debug.txt > /dev/null || { add_error_version $version; return; }
 
     echo "laravel $version test successed"
 }
