@@ -19,4 +19,4 @@ install: true
   # - export DB_USERNAME=travis DB_PASSWORD=''
 
 script:
-  - tests/test.sh -v $LARAVEL_VESIONS
+  - tests/test.sh -v $LARAVEL_VERSIONS
