@@ -1,6 +1,8 @@
 #+TITLE: Laravel Console Debug
 #+AUTHOR: frostrain
 
+[[file:https://api.travis-ci.org/frostrain/laravel-console-debug.svg?branch=master]]
+
 [[file:README_cn.org][中文说明]]
 * Dependency
 - laravel 5

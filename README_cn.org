@@ -1,6 +1,8 @@
 #+TITLE: Laravel Console Debug
 #+AUTHOR: frostrain
 
+[[file:https://api.travis-ci.org/frostrain/laravel-console-debug.svg?branch=master]]
+
 * 依赖
 - laravel 5
 - [[https://github.com/barryvdh/laravel-debugbar][barryvdh/laravel-debugbar]] (laravel-debugbar 本身并不能在命令行中显示调试信息)
