@@ -131,7 +131,12 @@ function test_version() {
         if [ ! "$exist" ]; then
             echo 'insert merge-plugin to comopser.json';
             # 在 composer 文件中(extra行的后面)插入 composer_insert.txt 文件中的字符
-            sed -i "/extra/r $test_root/composer_insert.txt" $composer_file
+            extra_exist=$(grep 'extra' $composer_file)
+            if [ ! "$extra_exist" ]; then
+                sed -i "/license/r $test_root/composer_insert_after_license.txt" $composer_file
+            else
+                sed -i "/extra/r $test_root/composer_insert_in_extra.txt" $composer_file
+            fi
         fi
         composer update
 
