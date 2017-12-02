@@ -10,7 +10,7 @@ matrix:
     # laravel 5.0 is incompatible with php 7.0
     env: LARAVEL_VERSIONS=5.0,5.1,5.2,5.3,5.4
   - php: 7.0
-    env: LARAVEL_VERSIONS=5.1,5.2,5.3,5.4
+    env: LARAVEL_VERSIONS=5.1,5.2,5.3,5.4,5.5
 
 cache:
   directories:

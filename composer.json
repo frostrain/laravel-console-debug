@@ -1,21 +1,28 @@
 {
-    "name": "frostrain/laravel-console-debug",
-    "description": "Show debug informations in console",
-    "keywords": ["laravel", "debug"],
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "frostrain",
-            "email": "frostrain@outlook.com"
-        }
-    ],
-    "require": {
-        "barryvdh/laravel-debugbar": "2.*"
-    },
-    "autoload": {
-        "psr-4": {
-            "Frostrain\\Laravel\\ConsoleDebug\\": "src/"
-        }
+  "name": "frostrain/laravel-console-debug",
+  "description": "Show debug informations in console",
+  "keywords": ["laravel", "debug"],
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "frostrain",
+      "email": "frostrain@outlook.com"
     }
+  ],
+  "require": {
+    "barryvdh/laravel-debugbar": "2.*|3.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Frostrain\\Laravel\\ConsoleDebug\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Frostrain\\Laravel\\ConsoleDebug\\ConsoleDebugServiceProvider"
+      ]
+    }
+  }
 }
