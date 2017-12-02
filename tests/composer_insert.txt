@@ -1,5 +1,4 @@
-    "extra": {
-        "merge-plugin": {
+       "merge-plugin": {
             "require": [
                 "../../composer.json"
             ],
@@ -10,5 +9,4 @@
             "merge-extra": false,
             "merge-extra-deep": false,
             "merge-scripts": false
-        }
-    },
+        },

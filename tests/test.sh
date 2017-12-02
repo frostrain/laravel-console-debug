@@ -126,10 +126,12 @@ function test_version() {
         # 配置 laravel 中的 composer.json
         # 使用 composer-merge-plugin 来合并插件的依赖
         composer_file=composer.json
+        # 检查 composer 文件中是否已经有了 'ignore-duplicates' 字符
         exist=$(grep 'ignore-duplicates' $composer_file)
         if [ ! "$exist" ]; then
             echo 'insert merge-plugin to comopser.json';
-            sed -i "/license/r $test_root/composer_insert.txt" $composer_file
+            # 在 composer 文件中(extra行的后面)插入 composer_insert.txt 文件中的字符
+            sed -i "/extra/r $test_root/composer_insert.txt" $composer_file
         fi
         composer update
 
