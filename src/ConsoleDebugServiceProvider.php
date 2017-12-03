@@ -51,6 +51,7 @@ class ConsoleDebugServiceProvider extends ServiceProvider
     }
 
     /**
+     * 检查当前环境是否输出 debug 信息
      * @return boolean
      */
     protected function isDebug()

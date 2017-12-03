@@ -133,8 +133,10 @@ function test_version() {
             # 在 composer 文件中(extra行的后面)插入 composer_insert.txt 文件中的字符
             extra_exist=$(grep 'extra' $composer_file)
             if [ ! "$extra_exist" ]; then
+                # laravel 里面的 composer.json 文件中 没有extra字段 (5.0-5.4版本)
                 sed -i "/license/r $test_root/composer_insert_after_license.txt" $composer_file
             else
+                # laravel 里面的 composer.json 文件中 有extra字段 (5.5+版本)
                 sed -i "/extra/r $test_root/composer_insert_in_extra.txt" $composer_file
             fi
         fi
