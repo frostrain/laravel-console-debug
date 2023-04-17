@@ -11,7 +11,8 @@
     }
   ],
   "require": {
-    "barryvdh/laravel-debugbar": "2.*|3.*"
+    "barryvdh/laravel-debugbar": "2.*|3.*",
+    "biohazard/laravel-debugbar-memory": "dev-master"
   },
   "autoload": {
     "psr-4": {
