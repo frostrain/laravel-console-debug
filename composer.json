@@ -1,5 +1,5 @@
 {
-  "name": "frostrain/laravel-console-debug",
+  "name": "biohazard/laravel-console-debug",
   "description": "Show debug informations in console",
   "keywords": ["laravel", "debug"],
   "type": "library",
@@ -11,7 +11,8 @@
     }
   ],
   "require": {
-    "barryvdh/laravel-debugbar": "2.*|3.*"
+    "barryvdh/laravel-debugbar": "2.*|3.*",
+    "biohazard/laravel-debugbar-memory": "dev-master"
   },
   "autoload": {
     "psr-4": {

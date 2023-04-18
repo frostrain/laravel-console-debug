@@ -5,9 +5,12 @@
 
 [[file:README_cn.org][中文说明]]
 * Dependency
-- laravel 5 (5.0 - 5.5)
+- laravel 5-10 (for version 5 and higher laravel 10)
 - [[https://github.com/barryvdh/laravel-debugbar][barryvdh/laravel-debugbar]] (laravel-debugbar itself dosen't display debug messages in console)
 * Introduction
+
+=composer require biohazard/laravel-console-debug=
+
 This package can show laravel-debugbar's debug messages and SQL queries in *console*.
 
 For example, there have a =test= command
@@ -41,6 +44,14 @@ For example, there have a =test= command
   +-------------------------------+----------+
   | select * from `users` limit 1 | 9.77ms   |
   +-------------------------------+----------+
+  
+  +-------------+---------+
+  | Name        | Memory  |
+  +-------------+---------+
+  | Booting     | 17.47MB |
+  | Application | 8.77MB  |
+  +-------------+---------+
+
 #+END_SRC
 
 =Test= command's example (this example require laravel 5.4+ to run, you need put these code in =routes/console.php=, for laravel 5.3 and below you can use =Command= class)

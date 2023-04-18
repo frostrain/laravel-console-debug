@@ -4,6 +4,7 @@ namespace Frostrain\Laravel\ConsoleDebug;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Helper\TableSeparator;
+use Illuminate\Support\Arr;
 
 class ConsoleOutputDebugCommand extends Command
 {
@@ -59,7 +60,7 @@ class ConsoleOutputDebugCommand extends Command
         if (!$this->output->isVerbose()) {
             return;
         }
-        $this->debugbar = $this->laravel->make('debugbar');
+        $this->debugbar = app()->make('debugbar');
         $this->columnLengthLimit = config('console_debug.column_length_limit');
         $this->debugMessageStyles = config('console_debug.debug_message_styles');
 
@@ -70,6 +71,30 @@ class ConsoleOutputDebugCommand extends Command
 
         $this->outputMessages();
         $this->outputSqls();
+        $this->outputMemory();
+    }
+
+    protected function outputMemory()
+    {
+
+        if (!$this->debugbar->hasCollector('memory_details')) {
+            return;
+        }
+
+        $memories = $this->debugbar
+            ->getCollector('memory_details')
+            ->collect();
+
+        $memories = $memories['measures'];
+
+        $memories = Arr::map($memories, function (string $value, string $key) {
+            return [$key, $value];
+        });
+
+        $this->table(
+            ['Name', 'Memory'],
+            $memories
+        );
     }
 
     protected function outputMessages()
@@ -102,7 +127,7 @@ class ConsoleOutputDebugCommand extends Command
             $this->info('');
             // table 方法传入的 $header 和 $data 最好是 元素数目相等, 并且顺序对应...
             // 否则结果会比较怪异
-            $header = ['level', 'debug message'];
+            $header = ['Level', 'Debug message'];
             // table 方法无法设置 verbosity ...
             $this->table($header, $rows);
         }
@@ -158,7 +183,7 @@ class ConsoleOutputDebugCommand extends Command
             $this->line('');
             // table 方法传入的 $header 和 $data 最好是 元素数目相等, 并且顺序对应...
             // 否则结果会比较怪异
-            $header = ['sql', 'duration'];
+            $header = ['SQL', 'Duration'];
             // table 方法无法设置 verbosity ...
             $this->table($header, $rows);
         }
