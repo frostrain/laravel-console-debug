@@ -1,5 +1,5 @@
 {
-  "name": "frostrain/laravel-console-debug",
+  "name": "biohazard/laravel-console-debug",
   "description": "Show debug informations in console",
   "keywords": ["laravel", "debug"],
   "type": "library",
